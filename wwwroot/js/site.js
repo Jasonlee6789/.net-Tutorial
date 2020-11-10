@@ -18,12 +18,15 @@ function addItem() {
   //声明 item 变量来构造待办事项的对象文字表示形式。
   fetch(uri, {
     method: "POST",
+    //method—指定 POST HTTP 操作谓词。
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
+    //headers—指定 Accept 和 Content-Type HTTP 请求标头。
+    //将两个标头都设置为 application/ json，以便分别指定接收和发送的媒体类型。
     body: JSON.stringify(item),
-
+    //body—指定请求正文的 JSON 表示形式。
     // 通过将存储在 item 中的对象文字传递到 JSON.stringify 函数来生成 JSON。
   })
     .then((response) => response.json())
@@ -58,7 +61,7 @@ function updateItem() {
     isComplete: document.getElementById("edit-isComplete").checked,
     name: document.getElementById("edit-name").value.trim(),
   };
-
+  //更新待办事项
   fetch(`${uri}/${itemId}`, {
     method: "PUT",
     headers: {
