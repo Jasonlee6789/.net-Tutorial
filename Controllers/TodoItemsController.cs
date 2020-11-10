@@ -25,7 +25,9 @@ namespace TodoApi.Controllers
         // public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            return await _context.TodoItems.Select(x => ItemToDTO(x)).ToListAsync();
+            return await _context.TodoItems
+            .Select(x => ItemToDTO(x))
+            .ToListAsync();
         }
 
         // GET: api/TodoItems/5
@@ -103,9 +105,9 @@ namespace TodoApi.Controllers
 
             //return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
             return CreatedAtAction(
-                nameof(GetTodoItem),
-             new { id = todoItem.Id },
-             ItemToDTO(todoItem));
+            nameof(GetTodoItem),
+            new { id = todoItem.Id },
+            ItemToDTO(todoItem));
 
         }
 
